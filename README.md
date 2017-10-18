@@ -1,0 +1,2 @@
+# regbot
+Dappening registration bot
