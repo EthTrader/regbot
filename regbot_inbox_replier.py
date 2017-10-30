@@ -48,7 +48,6 @@ while True:
                 message.reply("sorry, i can't help you")
         cursor.execute("UPDATE reg_inbox SET replied = true WHERE message_id = %s", (message_id,))
         conn.commit()
-        print(message_id)
         time.sleep(2)   # no more than 1 reply every 2s
     time.sleep(10)      # only check db for new messages every 10s
 
