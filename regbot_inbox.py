@@ -18,8 +18,9 @@ def start():
 
 def get_messages():
     for message in reddit.inbox.stream():
-        cursor.execute("INSERT INTO reg_inbox (message_id) VALUES (%s) ON CONFLICT (message_id) DO NOTHING", (message.id,))
-        conn.commit()
+        if '!ethreg' in text.lower():
+            cursor.execute("INSERT INTO reg_inbox (message_id) VALUES (%s) ON CONFLICT (message_id) DO NOTHING", (message.id,))
+            conn.commit()
 
 print("streaming inbox")
 start()
