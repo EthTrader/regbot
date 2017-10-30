@@ -11,7 +11,7 @@ reddit = praw.Reddit()
 
 def start():
     try:
-        get_comments()
+        get_messages()
     except prawcore.exceptions.RequestException:
         print("RequestException occurred, restarting...")
         start()
