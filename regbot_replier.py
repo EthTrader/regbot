@@ -15,6 +15,9 @@ while True:
     unreplied = cursor.fetchall()
     for comment_id in [i[0] for i in unreplied]:
         comment = reddit.comment(comment_id)
+        if comment.author is None:
+            print(comment_id, " was removed")
+            continue
         text = comment.body
         if 'karma' in text:
             cursor.execute("SELECT * FROM user_scores WHERE username = %s", (comment.author.name,))
